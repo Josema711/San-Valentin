@@ -13,8 +13,7 @@
     body {
       margin: 0;
       height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(135deg, #efeac4, #ffffff);
+      background:linear-gradient(135deg, #efeac4, #ffffff);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,7 +31,7 @@
 
     h1 {
       margin-bottom: 30px;
-      color: #333;
+      color: black;
     }
 
     .buttons {
@@ -80,41 +79,32 @@
   </div>
 
   <script>
-  const noBtn = document.getElementById("no");
+    const noBtn = document.getElementById("no");
 
-  noBtn.style.position = "fixed";
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
 
-  noBtn.addEventListener("mouseenter", () => {
-    const btnRect = noBtn.getBoundingClientRect();
-
-    const padding = 10; // margen de seguridad
-    const maxX = window.innerWidth - btnRect.width - padding;
-    const maxY = window.innerHeight - btnRect.height - padding;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    noBtn.style.transform = `translate(${x - btnRect.left}px, ${y - btnRect.top}px)`;
-  });
-
-  function sayYes() {
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:linear-gradient(135deg, #efeac4, #ffffff);
-        font-family:'Segoe UI', system-ui, sans-serif;
-        text-align:center;
-      ">
-        <h1 style="color:white; font-size:2.5rem;">
-          Sabía que dirías que sí
-        </h1>
-      </div>
-    `;
-  }
-</script>
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:linear-gradient(135deg, #efeac4, #ffffff);
+          font-family:'Segoe UI', system-ui, sans-serif;
+          text-align:center;
+        ">
+          <h1 style="color:white; font-size:2.5rem;">
+            Sabía que dirías que sí
+          </h1>
+        </div>
+      `;
+    }
+  </script>
 
 </body>
 </html>
