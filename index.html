@@ -13,25 +13,26 @@
     body {
       margin: 0;
       height: 100vh;
-      background:linear-gradient(135deg, #efeac4, #ffffff);
+      background: linear-gradient(135deg, #fdfaf6, #f5efe8); /* blanco roto */
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .card {
-      background: white;
+      background: #fdfaf6; /* blanco roto */
       padding: 40px 30px;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       text-align: center;
       max-width: 350px;
       width: 90%;
+      border: 2px solid #c72c41; /* borde carmesí oscuro */
     }
 
     h1 {
       margin-bottom: 30px;
-      color: black;
+      color: #c72c41; /* carmesí oscuro */
     }
 
     .buttons {
@@ -51,18 +52,19 @@
     }
 
     #yes {
-      background: #D94F34;
-      color: white;
+      background: #c72c41; /* carmesí oscuro */
+      color: #fdfaf6; /* blanco roto */
     }
 
     #yes:hover {
-      background: #BD4731;
+      background: #a72635; /* un poco más oscuro al hover */
       transform: scale(1.05);
     }
 
     #no {
-      background: #ccc;
-      color: #555;
+      background: #f5efe8; /* blanco roto */
+      color: #c72c41; /* carmesí oscuro */
+      border: 2px solid #c72c41; /* borde carmesí */
       position: relative;
     }
   </style>
@@ -85,8 +87,8 @@
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * 500 - 250;
       const y = Math.random() * 500 - 250;
-    noBtn.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 30 - 15}deg)`;
-  });
+      noBtn.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 30 - 15}deg)`;
+    });
     
     function sayYes() {
       document.body.innerHTML = `
@@ -95,11 +97,11 @@
           display:flex;
           align-items:center;
           justify-content:center;
-          background:linear-gradient(135deg, #efeac4, #ffffff);
+          background:linear-gradient(135deg, #fdfaf6, #f5efe8);
           font-family:'Segoe UI', system-ui, sans-serif;
           text-align:center;
         ">
-          <h1 style="font-size:2.5rem;">
+          <h1 style="font-size:2.5rem; color:#c72c41;">
             Sabía que dirías que sí
           </h1>
         </div>
@@ -109,3 +111,4 @@
 
 </body>
 </html>
+
