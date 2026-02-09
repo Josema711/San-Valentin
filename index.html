@@ -13,7 +13,8 @@
     body {
       margin: 0;
       height: 100vh;
-      background:linear-gradient(135deg, #A64330, #f36035);
+      overflow: hidden;
+      background: linear-gradient(135deg, #efeac4, #ffffff);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -81,19 +82,19 @@
   <script>
   const noBtn = document.getElementById("no");
 
-  noBtn.style.position = "absolute";
+  noBtn.style.position = "fixed";
 
   noBtn.addEventListener("mouseenter", () => {
     const btnRect = noBtn.getBoundingClientRect();
 
-    const maxX = window.innerWidth - btnRect.width;
-    const maxY = window.innerHeight - btnRect.height;
+    const padding = 10; // margen de seguridad
+    const maxX = window.innerWidth - btnRect.width - padding;
+    const maxY = window.innerHeight - btnRect.height - padding;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+    noBtn.style.transform = `translate(${x - btnRect.left}px, ${y - btnRect.top}px)`;
   });
 
   function sayYes() {
@@ -103,7 +104,7 @@
         display:flex;
         align-items:center;
         justify-content:center;
-        background:linear-gradient(135deg, #A64330, #f36035);
+        background:linear-gradient(135deg, #efeac4, #ffffff);
         font-family:'Segoe UI', system-ui, sans-serif;
         text-align:center;
       ">
