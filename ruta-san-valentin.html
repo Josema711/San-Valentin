@@ -12,16 +12,17 @@
 
   body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #fdfaf6, #f5efe8); /* blanco roto */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
   }
 
   .card {
     background: #fdfaf6; /* blanco roto */
-    padding: 30px 25px;
+    padding: 40px 25px 30px 25px; /* más espacio arriba */
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     text-align: center;
@@ -33,7 +34,8 @@
 
   h1 {
     color: #c72c41;
-    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 
   h2 {
@@ -59,7 +61,14 @@
   }
 
   .pista {
-    margin: 15px 0;
+    margin: 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #c72c41; /* línea separadora entre pistas */
+  }
+
+  /* Última pista no necesita línea abajo */
+  .pista:last-child {
+    border-bottom: none;
   }
 </style>
 </head>
@@ -79,29 +88,4 @@
     <div class="pista">
       <h2>Pista 2: La Gildería</h2>
       <p class="emoji">🍷🫒</p>
-      <p>Sigue las coordenadas para encontrar un lugar castizo de La Latina, donde el vermú y las gildas hacen un guiño.</p>
-      <p class="coords">40.409178, -3.711505</p>
-    </div>
-
-    <div class="pista">
-      <h2>Pista 3: Gilda Haus</h2>
-      <p class="emoji">🎶🍸🫒</p>
-      <p>Gildas con ritmo y cocteles con música. Un “hogar” moderno donde la gilda y la noche comparten la vida. Calle de San Mateo.</p>
-    </div>
-
-    <div class="pista">
-      <h2>Pista 4: Salmon Guru</h2>
-      <p class="emoji">🐟🍹🎨</p>
-      <p>Donde los peces no nadan, pero los cócteles sí son arte. Busca el templo de mezclas en Echegaray.</p>
-    </div>
-
-    <div class="pista">
-      <h2>Pista 5: Casa</h2>
-      <p class="emoji">🏡💖</p>
-      <p>La aventura termina donde todo empezó. Tu hogar te espera, y con él, un abrazo calentito. Sigue la línea azul del metro hasta Meléndez Valdés, 23.</p>
-    </div>
-
-  </div>
-
-</body>
-</html>
+      <p>Sigue las coordenadas para encontrar un lugar castizo de La Latina, donde el vermú y
