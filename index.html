@@ -13,7 +13,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background:linear-gradient(135deg, #A64330, #f36035);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -51,12 +51,12 @@
     }
 
     #yes {
-      background: #ff4d6d;
+      background: #D94F34;
       color: white;
     }
 
     #yes:hover {
-      background: #e63b5b;
+      background: #BD4731;
       transform: scale(1.05);
     }
 
@@ -70,43 +70,50 @@
 <body>
 
   <div class="card">
-    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+    <h1>¿Quieres ser mi San Valentín?</h1>
 
     <div class="buttons">
-      <button id="yes" onclick="sayYes()">Sí 💖</button>
-      <button id="no">No 😐</button>
+      <button id="yes" onclick="sayYes()">Sí</button>
+      <button id="no">No</button>
     </div>
   </div>
 
   <script>
-    const noBtn = document.getElementById("no");
+  const noBtn = document.getElementById("no");
 
-    noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * window.innerWidth - window.innerWidth / 2;
-    const y = Math.random() * window.innerHeight - window.innerHeight / 2;
+  noBtn.style.position = "absolute";
 
-          noBtn.style.position = "absolute";
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+  noBtn.addEventListener("mouseenter", () => {
+    const btnRect = noBtn.getBoundingClientRect();
 
-    function sayYes() {
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:linear-gradient(135deg, #ff9a9e, #fad0c4);
-          font-family:'Segoe UI', system-ui, sans-serif;
-          text-align:center;
-        ">
-          <h1 style="color:white; font-size:2.5rem;">
-            Sabía que dirías que sí 🥰💘
-          </h1>
-        </div>
-      `;
-    }
-  </script>
+    const maxX = window.innerWidth - btnRect.width;
+    const maxY = window.innerHeight - btnRect.height;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  });
+
+  function sayYes() {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:linear-gradient(135deg, #A64330, #f36035);
+        font-family:'Segoe UI', system-ui, sans-serif;
+        text-align:center;
+      ">
+        <h1 style="color:white; font-size:2.5rem;">
+          Sabía que dirías que sí
+        </h1>
+      </div>
+    `;
+  }
+</script>
 
 </body>
 </html>
