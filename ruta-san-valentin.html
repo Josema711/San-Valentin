@@ -5,75 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruta de Gildas y Cócteles - San Valentín</title>
 <style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:linear-gradient(135deg, #efeac4, #ffffff);
-    color: #fff;
     margin: 0;
-    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #fdfaf6, #f5efe8); /* blanco roto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .container {
-    max-width: 700px;
-    margin: auto;
-    padding: 20px;
-  }
-  h1, h2 {
+
+  .card {
+    background: #fdfaf6; /* blanco roto */
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     text-align: center;
-    font-family: 'Cursive', sans-serif;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid #c72c41; /* carmesí oscuro */
+    overflow: hidden;
   }
-  .pista {
-    background: #dd4c4c;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px 0;
-    font-size: 1.2rem;
+
+  h1 {
+    color: #c72c41;
+    margin-bottom: 10px;
   }
+
+  h2 {
+    color: #c72c41;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+
   .emoji {
     font-size: 2rem;
+    margin-bottom: 10px;
   }
+
   .coords {
     font-weight: bold;
     font-family: monospace;
+    color: #c72c41;
+  }
+
+  .pista {
+    margin: 15px 0;
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Ruta de Gildas y Cócteles</h1>
-  <h2>San Valentín</h2>
 
-  <div class="pista">
-    <h2>Pista 1: Doble & Gilda</h2>
-    <p class="emoji">🫒🍺</p>
-    <p>Aquí comienza el aperitivo, donde aceitunas, anchoas y picante viven. Busca la casa donde la <strong>gilda</strong> dobla su encanto en Chamberí.</p>
-    <p class="coords">Calle de Santa Engracia, 105</p>
+  <div class="card">
+    <h1>Ruta de Gildas y Cócteles</h1>
+    <h2>San Valentín</h2>
+
+    <div class="pista">
+      <h2>Pista 1: Doble & Gilda</h2>
+      <p class="emoji">🫒🍺</p>
+      <p>Aquí comienza el aperitivo, donde aceitunas, anchoas y picante viven. Busca la casa donde la <strong>gilda</strong> dobla su encanto en Chamberí.</p>
+      <p class="coords">Calle de Santa Engracia, 105</p>
+    </div>
+
+    <div class="pista">
+      <h2>Pista 2: La Gildería</h2>
+      <p class="emoji">🍷🫒</p>
+      <p>Sigue las coordenadas para encontrar un lugar castizo de La Latina, donde el vermú y las gildas hacen un guiño.</p>
+      <p class="coords">40.409178, -3.711505</p>
+    </div>
+
+    <div class="pista">
+      <h2>Pista 3: Gilda Haus</h2>
+      <p class="emoji">🎶🍸🫒</p>
+      <p>Gildas con ritmo y cocteles con música. Un “hogar” moderno donde la gilda y la noche comparten la vida. Calle de San Mateo.</p>
+    </div>
+
+    <div class="pista">
+      <h2>Pista 4: Salmon Guru</h2>
+      <p class="emoji">🐟🍹🎨</p>
+      <p>Donde los peces no nadan, pero los cócteles sí son arte. Busca el templo de mezclas en Echegaray.</p>
+    </div>
+
+    <div class="pista">
+      <h2>Pista 5: Casa</h2>
+      <p class="emoji">🏡💖</p>
+      <p>La aventura termina donde todo empezó. Tu hogar te espera, y con él, un abrazo calentito. Sigue la línea azul del metro hasta Meléndez Valdés, 23.</p>
+    </div>
+
   </div>
 
-  <div class="pista">
-    <h2>Pista 2: La Gildería</h2>
-    <p class="emoji">🍷🫒</p>
-    <p>Sigue las coordenadas para encontrar un lugar castizo de La Latina, donde el vermú y las gildas hacen un guiño.</p>
-    <p class="coords">40.409178, -3.711505</p>
-  </div>
-
-  <div class="pista">
-    <h2>Pista 3: Gilda Haus</h2>
-    <p class="emoji">🎶🍸🫒</p>
-    <p>Gildas con ritmo y cocteles con música. Un “hogar” moderno donde la gilda y la noche comparten la vida. Calle de San Mateo.</p>
-  </div>
-
-  <div class="pista">
-    <h2>Pista 4: Salmon Guru</h2>
-    <p class="emoji">🐟🍹🎨</p>
-    <p>Donde los peces no nadan, pero los cócteles sí son arte. Busca el templo de mezclas en Echegaray.</p>
-  </div>
-
-  <div class="pista">
-    <h2>Pista 5: Casa</h2>
-    <p class="emoji">🏡</p>
-    <p>La aventura termina donde todo empezó. Tu hogar te espera, y con él, un abrazo calentito. Sigue la línea azul del metro hasta Meléndez Valdés, 23.</p>
-  </div>
-
-</div>
 </body>
 </html>
