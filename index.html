@@ -137,6 +137,25 @@
     setInterval(updateCountdown, 1000);
 
     function sayYes() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:linear-gradient(135deg, #fdfaf6, #f5efe8);
+          font-family:'Segoe UI', system-ui, sans-serif;
+          text-align:center;
+          flex-direction: column;
+        ">
+          <h1 style="font-size:2.5rem; color:#c72c41; margin-bottom: 20px;">
+            Sabía que dirías que sí
+          </h1>
+          <p style="font-size:1rem; color:#c72c41; margin:0;">
+            (Pronto tendrás noticias)
+          </p>
+        </div>
+      `;
   document.body.innerHTML = `
     <div style="
       height:100vh;
