@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 2</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="gate.js"></script>
+  <script src="messages.js"></script>
 </head>
 <body>
+  <script>
+    if (typeof checkAccess === 'function') {
+      if (!checkAccess()) {
+        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
+      }
+    }
+  </script>
 
   <div class="card">
-    <h1>Pista 2</h1>
+    <h1 data-msg="pista2.title"></h1>
     <div class="emoji">🍷🫒</div>
-    <p>Sigue las coordenadas para encontrar un lugar castizo donde Madrid se vuelve costumbre y las cañas saben a “de siempre”.</p>
-    <p class="coords"><a href="https://www.google.com/maps/search/?api=1&query=40.43176,-3.70085" target="_blank" rel="noopener">40.43176, -3.70085</a></p>
-    <button class="route-button" onclick="window.open('gilda_haus.html', '_blank')">
-      Siguiente pista
-    </button>
+    <p data-msg="pista2.desc"></p>
+    <p class="coords"><a href="https://www.google.com/maps/search/?api=1&query=40.43176,-3.70085" target="_blank" rel="noopener" data-msg="pista2.coords"></a></p>
+    <button class="route-button" onclick="openPathWithToken('gilda_haus.html','_blank')" data-msg="route.next"></button>
   </div>
 
 </body>

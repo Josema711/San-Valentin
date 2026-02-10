@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 3</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="gate.js"></script>
+  <script src="messages.js"></script>
 </head>
 <body>
+  <script>
+    if (typeof checkAccess === 'function') {
+      if (!checkAccess()) {
+        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
+      }
+    }
+  </script>
 
   <div class="card">
-    <h1>Pista 3</h1>
+    <h1 data-msg="pista3.title"></h1>
     <div class="emoji">🎶🍸🫒</div>
-    <p>Gildas con ritmo y cócteles con música. Un <strong>“HAUS”</strong> moderno donde la <strong>GILDA</strong> y la noche comparten la vida.</p>
-    <button class="route-button" onclick="window.open('salmon_guru.html', '_blank')">
-      Siguiente pista
-    </button>
+    <p data-msg="pista3.desc"></p>
+    <button class="route-button" onclick="openPathWithToken('salmon_guru.html','_blank')" data-msg="route.next"></button>
   </div>
 
 </body>

@@ -6,12 +6,13 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(135deg, #fdfaf6, #f5efe8);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 .card {
@@ -20,7 +21,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   text-align: center;
-  max-width: 400px;
+  max-width: 350px;
   width: 90%;
   border: 2px solid #c72c41;
   overflow: hidden;
@@ -40,6 +41,10 @@ p {
 .emoji {
   font-size: 2rem;
   margin-bottom: 10px;
+}
+
+strong {
+  color: #c72c41;
 }
 
 .coords {
@@ -79,3 +84,114 @@ a {
   color: inherit;
   text-decoration: underline dotted;
 }
+
+/* Estilos específicos para la página principal `index.html` */
+.index-page {
+  flex-direction: column;
+}
+
+.index-page .card {
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+#yes {
+  background: #c72c41;
+  color: #fdfaf6;
+}
+
+#yes:hover {
+  background: #a72635;
+  transform: scale(1.05);
+}
+
+#no {
+  background: #f5efe8;
+  color: #c72c41;
+  border: 2px solid #c72c41;
+  position: relative;
+  transition: left 0.4s cubic-bezier(.2,.9,.2,1), top 0.4s cubic-bezier(.2,.9,.2,1), transform 0.25s ease;
+  will-change: left, top, transform;
+  touch-action: manipulation;
+}
+
+#passwordBox {
+  padding: 15px;
+  border: 1px solid #c72c41;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #c72c41;
+  background: #fdfaf6;
+  min-height: 24px;
+}
+
+/* Spinner overlay para el chequeo de contraseña */
+.spinner-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.15);
+  z-index: 10000;
+}
+
+.spinner {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 8px solid rgba(255,255,255,0.9);
+  border-top-color: #c72c41;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Overlay de puerta (gate) cliente */
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfaf6; /* fondo liso para que no se vea nada detrás */
+  z-index: 20000;
+}
+
+.gate-box {
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.gate-box input {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid #c72c41;
+  width: 100%;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.gate-box button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #c72c41;
+  color: #fdfaf6;
+  cursor: pointer;
+}
+

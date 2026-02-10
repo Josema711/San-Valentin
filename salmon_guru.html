@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 4</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="gate.js"></script>
+  <script src="messages.js"></script>
 </head>
 <body>
+  <script>
+    if (typeof checkAccess === 'function') {
+      if (!checkAccess()) {
+        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
+      }
+    }
+  </script>
 
   <div class="card">
-    <h1>Pista 4</h1>
+    <h1 data-msg="pista4.title"></h1>
     <div class="emoji">🐟🍹🎨</div>
-    <p>Donde el <strong>SALMON</strong> no nada, pero los cócteles sí son arte. Busca el templo <strong>GURU</strong> de mezclas en <a href="https://www.google.com/maps/search/?api=1&query=Calle%20de%20Echegaray%2C%2021%2C%20Madrid" target="_blank" rel="noopener"><strong>ECHEGARAY</strong></a>.</p>
+    <p data-msg="pista4.desc"></p>
   </div>
 
 </body>
