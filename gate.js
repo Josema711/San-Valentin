@@ -124,6 +124,8 @@
   window.createToken = function(){ const t = generateToken(); setToken(t); return t; };
   // Permite que otras partes del sitio obtengan la contraseña configurada (fallback seguro opcional)
   window.getGatePassword = function(){ return GATE_PASSWORD; };
+  // Exponer función para forzar la apertura del overlay desde la consola en caso de caché/errores
+  window.forceShowGate = function(){ try { showGate(); } catch(e) { console.error('forceShowGate error', e); } };
 
   // Ejecutar puerta en la página principal.
   // En GitHub Pages la página raíz no siempre muestra '/index.html', así que detectamos
