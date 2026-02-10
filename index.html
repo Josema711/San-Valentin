@@ -104,7 +104,7 @@
   const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
   if (days <= 0) {
-    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA2 QUE PULPO1";
+    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA QUE PULPO1";
     return;
   }
   if (days === 1) {
@@ -137,25 +137,67 @@
     setInterval(updateCountdown, 1000);
 
     function sayYes() {
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:linear-gradient(135deg, #fdfaf6, #f5efe8);
-          font-family:'Segoe UI', system-ui, sans-serif;
-          text-align:center;
-          flex-direction: column;
-        ">
-          <h1 style="font-size:2.5rem; color:#c72c41; margin-bottom: 20px;">
-            Sabía que dirías que sí
-          </h1>
-          <p style="font-size:1rem; color:#c72c41; margin:0;">
-            (Pronto tendrás noticias)
-          </p>
-        </div>
-      `;
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, #fdfaf6, #f5efe8);
+      font-family:'Segoe UI', system-ui, sans-serif;
+      text-align:center;
+      flex-direction: column;
+    ">
+      <h1 style="font-size:2.5rem; color:#c72c41; margin-bottom: 10px;">
+        Sabía que dirías que sí
+      </h1>
+
+      <div style="margin-top:20px; display:flex; gap:10px;">
+        <input 
+          id="passwordInput"
+          type="text"
+          placeholder="Introduce la contraseña"
+          style="
+            padding:12px 20px;
+            border-radius:30px;
+            border:2px solid #c72c41;
+            font-size:16px;
+            outline:none;
+          "
+        />
+
+        <button 
+          onclick="checkPassword()"
+          style="
+            padding:12px 25px;
+            font-size:16px;
+            border-radius:30px;
+            border:none;
+            cursor:pointer;
+            background:#c72c41;
+            color:#fdfaf6;
+            transition:all 0.2s ease;
+          "
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Probar
+        </button>
+      </div>
+
+      <p id="result" style="margin-top:20px; color:#c72c41;"></p>
+    </div>
+  `;
+}
+    
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim().toUpperCase();
+    
+      const correctPassword = "VAS MAS PERDIDA QUE PULPO1";
+    
+      if (input === correctPassword) {
+        window.open("pista1.html", "_blank");
+      }
     }
   </script>
 
