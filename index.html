@@ -200,6 +200,18 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    // Asegura que exista un token de sesión sencillo para pasar en la query
+    function ensureSessionToken() {
+      try {
+        let t = sessionStorage.getItem('sv_token');
+        if (!t) {
+          t = Date.now().toString(36) + Math.random().toString(36).slice(2,12);
+          sessionStorage.setItem('sv_token', t);
+        }
+        return t;
+      } catch (e) { return Date.now().toString(36) + Math.random().toString(36).slice(2,12); }
+    }
+
 
     function sayYes() {
       document.body.innerHTML = `
@@ -283,18 +295,8 @@
           // Navegar en la MISMA ventana para evitar bloqueadores de popups.
           (function(){
             const path = "doble_&_gilda.html";
-            // Asegurarnos de que exista un token en sessionStorage;
-            // si falta, crear uno (usando createToken expuesto por gate.js si está disponible).
-            let token = sessionStorage.getItem('sv_token') || '';
-            if (!token) {
-              if (typeof createToken === 'function') {
-                try { token = createToken(); } catch(e) { token = ''; }
-              }
-              if (!token) {
-                token = Date.now().toString(36) + Math.random().toString(36).slice(2);
-                try { sessionStorage.setItem('sv_token', token); } catch(e) {}
-              }
-            }
+            // Asegurarnos de que exista un token en sessionStorage
+            const token = ensureSessionToken();
             const sep = path.indexOf('?') === -1 ? '?' : '&';
             const url = path + sep + 'sv=' + encodeURIComponent(token);
             window.location.href = url;
