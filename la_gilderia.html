@@ -5,24 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 2</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="gate.js"></script>
   <script src="messages.js"></script>
 </head>
 <body>
-  <script>
-    if (typeof checkAccess === 'function') {
-      if (!checkAccess()) {
-        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
-      }
-    }
-  </script>
+  <!-- Sin comprobación de acceso (protección eliminada) -->
 
   <div class="card">
     <h1 data-msg="pista2.title"></h1>
     <div class="emoji">🍷🫒</div>
     <p data-msg="pista2.desc"></p>
     <p class="coords"><a href="https://www.google.com/maps/search/?api=1&query=40.43176,-3.70085" target="_blank" rel="noopener" data-msg="pista2.coords"></a></p>
-    <button class="route-button" onclick="openPathWithToken('gilda_haus.html','_blank')" data-msg="route.next"></button>
+    <a class="route-button" href="gilda_haus.html" target="_blank" rel="noopener" data-msg="route.next"></a>
   </div>
 
 </body>

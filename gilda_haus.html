@@ -5,23 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 3</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="gate.js"></script>
   <script src="messages.js"></script>
 </head>
 <body>
-  <script>
-    if (typeof checkAccess === 'function') {
-      if (!checkAccess()) {
-        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
-      }
-    }
-  </script>
+  <!-- Sin comprobación de acceso (protección eliminada) -->
 
   <div class="card">
     <h1 data-msg="pista3.title"></h1>
     <div class="emoji">🎶🍸🫒</div>
     <p data-msg="pista3.desc"></p>
-    <button class="route-button" onclick="openPathWithToken('salmon_guru.html','_blank')" data-msg="route.next"></button>
+    <a class="route-button" href="salmon_guru.html" target="_blank" rel="noopener" data-msg="route.next"></a>
   </div>
 
 </body>

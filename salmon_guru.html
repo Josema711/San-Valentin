@@ -5,17 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 4</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="gate.js"></script>
   <script src="messages.js"></script>
 </head>
 <body>
-  <script>
-    if (typeof checkAccess === 'function') {
-      if (!checkAccess()) {
-        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
-      }
-    }
-  </script>
+  <!-- Sin comprobación de acceso (protección eliminada) -->
 
   <div class="card">
     <h1 data-msg="pista4.title"></h1>

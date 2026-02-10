@@ -5,26 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pista 1</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="gate.js"></script>
   <script src="messages.js"></script>
 </head>
 <body>
-  <script>
-    // Comprobar acceso: si no hay token válido, mostrar overlay de no acceso
-    if (typeof checkAccess === 'function') {
-      if (!checkAccess()) {
-        document.addEventListener('DOMContentLoaded', function(){ showNoAccessOverlay(); });
-      }
-    }
-  </script>
+  <!-- Sin comprobación de acceso (protección eliminada) -->
 
   <div class="card">
     <h1 data-msg="pista1.title"></h1>
     <div class="emoji">🫒🍺</div>
     <p data-msg="pista1.desc"></p>
     <p><strong data-msg="pista1.address_label"></strong> <a href="https://www.google.com/maps/search/?api=1&query=Calle%20de%20Santa%20Engracia%2C%20105%2C%20Madrid" target="_blank" rel="noopener" data-msg="pista1.address"></a></p>
-    <button class="route-button" onclick="openPathWithToken('la_gilderia.html','_blank')" data-msg="route.next">
-    </button>
+    <a class="route-button" href="la_gilderia.html" target="_blank" rel="noopener" data-msg="route.next"></a>
   </div>
 
 </body>
