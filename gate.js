@@ -130,18 +130,22 @@
   // Ejecutar puerta en la página principal.
   // En GitHub Pages la página raíz no siempre muestra '/index.html', así que detectamos
   // tanto la clase `index-page` en el `<body>` como rutas que terminen en '/' o en 'index.html'.
-  function isIndexPage() {
+  function isAutoShowPage() {
+    // Auto-mostrar solo en la página principal (index) y en `ruta.html`.
     try {
-      if (typeof document !== 'undefined' && document.body && document.body.classList.contains('index-page')) return true;
+      if (typeof document !== 'undefined' && document.body) {
+        if (document.body.classList.contains('index-page')) return true;
+      }
     } catch (e) {}
     const p = (location && location.pathname) ? String(location.pathname) : '';
-    if (/(^|\/)index\.html?$/.test(p)) return true;
-    // aceptar la raíz del sitio (p.ej. '/repo-name/' o '/')
-    if (p === '/' || p.endsWith('/')) return true;
+    // index.html explicitly or site root
+    if (/(^|\/)index\.html?$/.test(p) || p === '/') return true;
+    // ruta.html explicitly
+    if (/(^|\/)ruta\.html?$/.test(p)) return true;
     return false;
   }
 
-  if (isIndexPage()) {
+  if (isAutoShowPage()) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showGate);
     } else {
