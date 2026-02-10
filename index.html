@@ -13,26 +13,26 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #fdfaf6, #f5efe8); /* blanco roto */
+      background: linear-gradient(135deg, #fdfaf6, #f5efe8);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .card {
-      background: #fdfaf6; /* blanco roto */
+      background: #fdfaf6;
       padding: 40px 30px;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       text-align: center;
       max-width: 350px;
       width: 90%;
-      border: 2px solid #c72c41; /* borde carmesí oscuro */
+      border: 2px solid #c72c41;
     }
 
     h1 {
       margin-bottom: 30px;
-      color: #c72c41; /* carmesí oscuro */
+      color: #c72c41;
     }
 
     .buttons {
@@ -52,19 +52,19 @@
     }
 
     #yes {
-      background: #c72c41; /* carmesí oscuro */
-      color: #fdfaf6; /* blanco roto */
+      background: #c72c41;
+      color: #fdfaf6;
     }
 
     #yes:hover {
-      background: #a72635; /* un poco más oscuro al hover */
+      background: #a72635;
       transform: scale(1.05);
     }
 
     #no {
-      background: #f5efe8; /* blanco roto */
-      color: #c72c41; /* carmesí oscuro */
-      border: 2px solid #c72c41; /* borde carmesí */
+      background: #f5efe8;
+      color: #c72c41;
+      border: 2px solid #c72c41;
       position: relative;
     }
   </style>
@@ -72,8 +72,11 @@
 <body>
 
   <div class="card">
-    <h1>Feli </h1></br>
+    <h1>Feli</h1></br>
     <h1>¿Quieres ser mi San Valentín?</h1>
+
+    <!-- CONTADOR -->
+    <p id="countdown" style="color:#c72c41; font-size:1rem; margin-bottom:30px;"></p>
 
     <div class="buttons">
       <button id="yes" onclick="sayYes()">Sí</button>
@@ -89,7 +92,32 @@
       const y = Math.random() * 500 - 250;
       noBtn.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 30 - 15}deg)`;
     });
-    
+
+    // CONTADOR REGRESIVO
+    const targetDate = new Date("2026-02-14T00:00:00");
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "✨ Ya llegó ✨";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent =
+        `Faltan ${days} días, ${hours}h ${minutes}m ${seconds}s 💖`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     function sayYes() {
       document.body.innerHTML = `
         <div style="
