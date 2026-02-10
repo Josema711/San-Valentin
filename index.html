@@ -86,34 +86,15 @@
         noBtn.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
       }
 
-      // Evitar movimiento inmediato en taps táctiles: si el usuario toca y suelta rápido,
-      // consideramos que es un tap y no movemos el botón. Si mantiene el dedo, movemos.
-      let touchMoveTimeout = null;
-
       noBtn.addEventListener('pointerenter', (e) => {
         if (e.pointerType === 'mouse') moveNoButtonRandomly();
       });
 
+      // Mover inmediatamente tanto en mouse como en touch para evitar que el botón
+      // sea pulsable en dispositivos móviles.
       noBtn.addEventListener('pointerdown', (e) => {
-        if (e.pointerType === 'touch') {
-          // programar movimiento tras breve retraso; si se suelta antes, se cancela
-          touchMoveTimeout = setTimeout(() => {
-            moveNoButtonRandomly();
-            touchMoveTimeout = null;
-          }, 180);
-        } else {
-          // mouse clicks provocan movimiento inmediato
-          moveNoButtonRandomly();
-        }
+        moveNoButtonRandomly();
       }, {passive: true});
-
-      noBtn.addEventListener('pointerup', () => {
-        if (touchMoveTimeout) { clearTimeout(touchMoveTimeout); touchMoveTimeout = null; }
-      });
-
-      noBtn.addEventListener('pointercancel', () => {
-        if (touchMoveTimeout) { clearTimeout(touchMoveTimeout); touchMoveTimeout = null; }
-      });
 
       // Recalcula posición si la ventana cambia de tamaño para mantener el botón dentro
       function clampNoButtonIntoViewport() {
