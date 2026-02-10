@@ -125,8 +125,21 @@
   // Permite que otras partes del sitio obtengan la contraseña configurada (fallback seguro opcional)
   window.getGatePassword = function(){ return GATE_PASSWORD; };
 
-  // Ejecutar puerta en index.html: solo si estamos en la página index (por seguridad visual)
-  if (/index\.html?$/.test(location.pathname) || location.pathname === '/' ) {
+  // Ejecutar puerta en la página principal.
+  // En GitHub Pages la página raíz no siempre muestra '/index.html', así que detectamos
+  // tanto la clase `index-page` en el `<body>` como rutas que terminen en '/' o en 'index.html'.
+  function isIndexPage() {
+    try {
+      if (typeof document !== 'undefined' && document.body && document.body.classList.contains('index-page')) return true;
+    } catch (e) {}
+    const p = (location && location.pathname) ? String(location.pathname) : '';
+    if (/(^|\/)index\.html?$/.test(p)) return true;
+    // aceptar la raíz del sitio (p.ej. '/repo-name/' o '/')
+    if (p === '/' || p.endsWith('/')) return true;
+    return false;
+  }
+
+  if (isIndexPage()) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showGate);
     } else {
