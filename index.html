@@ -110,7 +110,10 @@
       const y = Math.random() * 500 - 250;
       noBtn.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 30 - 15}deg)`;
     });
-
+      function pad(num) {
+        return String(num).padStart(2, "0");
+      }
+    
     // CONTADOR REGRESIVO
     const targetDate = new Date("2026-02-14T00:00:00");
     const countdownEl = document.getElementById("countdown");
@@ -127,7 +130,7 @@
 
       // Actualizamos siempre el contador
       if (diff > 0) {
-        countdownEl.textContent = `${days}:${hours}:${minutes}:${seconds}`;
+        countdownEl.textContent = `${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
       } else {
         countdownEl.textContent = "";
       }
@@ -222,7 +225,6 @@
         window.open("doble_&_gilda.html", "_blank");
       }
     }
-
   </script>
 
 </body>
