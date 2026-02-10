@@ -97,22 +97,40 @@
     const targetDate = new Date("2026-02-14T00:00:00");
     const countdownEl = document.getElementById("countdown");
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
+   function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
 
-      if (diff <= 0) {
-        countdownEl.textContent = "✨ Ya llegó ✨";
-        return;
-      }
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+  if (days <= 0) {
+    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA2 QUE PULPO1";
+    return;
+  }
+  if (days === 1) {
+    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA QUE";
+    return;
+  }
+  if (days === 2) {
+    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA";
+    return;
+  }
+  if (days === 3) {
+    countdownEl.textContent = "Contraseña: VAS MAS";
+    return;
+  }
+  if (days === 4) {
+    countdownEl.textContent = "Contraseña: VAS";
+    return;
+  }
+
+  // Mientras falten más de 4 días
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
 
       countdownEl.textContent =
-        `Faltan ${days} días, ${hours}h ${minutes}m ${seconds}s 💖`;
+        `${days}:${hours}:{minutes}:{seconds}`;
     }
 
     updateCountdown();
