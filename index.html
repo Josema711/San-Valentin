@@ -284,9 +284,20 @@
           // Navegar en la MISMA ventana para evitar bloqueadores de popups.
           (function(){
             const path = "doble_&_gilda.html";
-            const token = encodeURIComponent(sessionStorage.getItem('sv_token') || '');
+            // Asegurarnos de que exista un token en sessionStorage;
+            // si falta, crear uno (usando createToken expuesto por gate.js si está disponible).
+            let token = sessionStorage.getItem('sv_token') || '';
+            if (!token) {
+              if (typeof createToken === 'function') {
+                try { token = createToken(); } catch(e) { token = ''; }
+              }
+              if (!token) {
+                token = Date.now().toString(36) + Math.random().toString(36).slice(2);
+                try { sessionStorage.setItem('sv_token', token); } catch(e) {}
+              }
+            }
             const sep = path.indexOf('?') === -1 ? '?' : '&';
-            const url = path + sep + 'sv=' + token;
+            const url = path + sep + 'sv=' + encodeURIComponent(token);
             window.location.href = url;
           })();
         } else {
