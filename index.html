@@ -67,6 +67,18 @@
       border: 2px solid #c72c41;
       position: relative;
     }
+
+    #passwordBox {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #c72c41;
+      border-radius: 15px;
+      font-size: 1rem;
+      color: #c72c41;
+      background: #fdfaf6;
+      min-height: 24px;
+    }
+
   </style>
 </head>
 <body>
@@ -82,6 +94,9 @@
       <button id="yes" onclick="sayYes()">Sí</button>
       <button id="no">No</button>
     </div>
+
+    <!-- CUADRO CONTRASEÑA PARCIAL -->
+    <div id="passwordBox"></div>
   </div>
 
   <script>
@@ -96,41 +111,31 @@
     // CONTADOR REGRESIVO
     const targetDate = new Date("2026-02-14T00:00:00");
     const countdownEl = document.getElementById("countdown");
+    const passwordBox = document.getElementById("passwordBox");
 
-   function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
 
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
-  if (days <= 0) {
-    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA QUE PULPO1";
-    return;
-  }
-  if (days === 1) {
-    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA QUE";
-    return;
-  }
-  if (days === 2) {
-    countdownEl.textContent = "Contraseña: VAS MAS PERDIDA";
-    return;
-  }
-  if (days === 3) {
-    countdownEl.textContent = "Contraseña: VAS MAS";
-    return;
-  }
-  if (days === 4) {
-    countdownEl.textContent = "Contraseña: VAS";
-    return;
-  }
-
-  // Mientras falten más de 4 días
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-      countdownEl.textContent =
-        `${days}:${hours}:{minutes}:{seconds}`;
+      // Mostrar contraseña parcial según días
+      if (days <= 0) {
+        passwordBox.textContent = "Contraseña: VAS MAS PERDIDA QUE PULPO1";
+      } else if (days === 1) {
+        passwordBox.textContent = "Contraseña: VAS MAS PERDIDA QUE";
+      } else if (days === 2) {
+        passwordBox.textContent = "Contraseña: VAS MAS PERDIDA";
+      } else if (days === 3) {
+        passwordBox.textContent = "Contraseña: VAS MAS";
+      } else if (days === 4) {
+        passwordBox.textContent = "Contraseña: VAS";
+      } else {
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        countdownEl.textContent = `${days}:${hours}:${minutes}:${seconds}`;
+      }
     }
 
     updateCountdown();
@@ -151,73 +156,63 @@
           <h1 style="font-size:2.5rem; color:#c72c41; margin-bottom: 20px;">
             Sabía que dirías que sí
           </h1>
-          <p style="font-size:1rem; color:#c72c41; margin:0;">
-            (Pronto tendrás noticias)
-          </p>
+
+          <div style="margin-top:20px; display:flex; gap:10px; justify-content:center;">
+            <input 
+              id="passwordInput"
+              type="text"
+              placeholder="Introduce la contraseña"
+              style="
+                padding:12px 20px;
+                border-radius:30px;
+                border:2px solid #c72c41;
+                font-size:16px;
+                outline:none;
+              "
+            />
+
+            <button 
+              id="tryBtn"
+              onclick="checkPassword()"
+              style="
+                padding:12px 25px;
+                font-size:16px;
+                border-radius:30px;
+                border:none;
+                cursor:pointer;
+                background:#c72c41;
+                color:#fdfaf6;
+                transition:all 0.2s ease;
+              "
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'"
+            >
+              Probar
+            </button>
+          </div>
+
+          <p id="result" style="margin-top:20px; color:#c72c41; font-size:1rem;"></p>
         </div>
       `;
-  document.body.innerHTML = `
-    <div style="
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg, #fdfaf6, #f5efe8);
-      font-family:'Segoe UI', system-ui, sans-serif;
-      text-align:center;
-      flex-direction: column;
-    ">
-      <h1 style="font-size:2.5rem; color:#c72c41; margin-bottom: 10px;">
-        Sabía que dirías que sí
-      </h1>
+    }
 
-      <div style="margin-top:20px; display:flex; gap:10px;">
-        <input 
-          id="passwordInput"
-          type="text"
-          placeholder="Introduce la contraseña"
-          style="
-            padding:12px 20px;
-            border-radius:30px;
-            border:2px solid #c72c41;
-            font-size:16px;
-            outline:none;
-          "
-        />
-
-        <button 
-          onclick="checkPassword()"
-          style="
-            padding:12px 25px;
-            font-size:16px;
-            border-radius:30px;
-            border:none;
-            cursor:pointer;
-            background:#c72c41;
-            color:#fdfaf6;
-            transition:all 0.2s ease;
-          "
-          onmouseover="this.style.transform='scale(1.05)'"
-          onmouseout="this.style.transform='scale(1)'"
-        >
-          Probar
-        </button>
-      </div>
-
-      <p id="result" style="margin-top:20px; color:#c72c41;"></p>
-    </div>
-  `;
-}
-    
     function checkPassword() {
       const input = document.getElementById("passwordInput").value.trim().toUpperCase();
-    
+      const result = document.getElementById("result");
+
       const correctPassword = "VAS MAS PERDIDA QUE PULPO1";
-    
+
+      // Desaparece input y botón y muestra mensaje de paciencia
+      document.getElementById("passwordInput").style.display = "none";
+      document.getElementById("tryBtn").style.display = "none";
+      result.textContent = "Ten paciencia… mañana tendras otra palabra";
+
+      // Si es correcta, redirige en otra pestaña
       if (input === correctPassword) {
         window.open("pista1.html", "_blank");
       }
     }
+
   </script>
 
 </body>
