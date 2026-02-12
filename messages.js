@@ -8,7 +8,7 @@ window.MESSAGES = {
   "index.yes": "Sí",
   "index.no": "No",
   "index.countdown_format": "{days}:{hours}:{minutes}:{seconds}",
-  "index.result_wait": "Ten paciencia… mañana tendrás otra palabra",
+  "index.result_wait": "Pues me he equivocado... ten mas paciencia, mañana quizas aciertes",
   "index.password_full": "Contraseña: EL CALCETIN DE PAPELES DE MI TIA FELIPE DICE QUE LA CONTRASEÑA ES \"07022026\"",
   "index.password_day0": "Contraseña: EL CALCETIN DE PAPELES DE MI TIA FELIPE DICE QUE",
   "index.password_day1": "Contraseña: EL CALCETIN DE PAPELES DE MI TIA FELIPE",
