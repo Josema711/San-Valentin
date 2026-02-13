@@ -286,7 +286,7 @@
           // Quitar input y botón después de la ruleta y mostrar solo el mensaje
           if (inputEl && inputEl.parentNode) inputEl.parentNode.removeChild(inputEl);
           if (tryBtn && tryBtn.parentNode) tryBtn.parentNode.removeChild(tryBtn);
-          result.textContent = (typeof getMessage === 'function') ? getMessage('index.result_wait') : "Ten paciencia… mañana tendrás otra palabra";
+          result.textContent = (typeof getMessage === 'function') ? getMessage('index.result_wait') : "Todavia no la has pillado...";
         }
       }, 1400);
     }
